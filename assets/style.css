@@ -210,7 +210,9 @@ body {
 }
 
 #skills .skill-bar {
-  height: 12px;
+  width: 500px; /* masaüstünde sabit uzunluk */
+  max-width: 100%;
+  height: 10px;
   background: #eee;
   border-radius: 999px;
   overflow: hidden;
@@ -302,7 +304,68 @@ body {
   }
 }
 
-  
+  /* ------------------------- */
+/* GENEL (her ekranda iyi dursun) */
+:root { --container-pad: 16px; }
+
+.wrap { padding-inline: var(--container-pad); }
+
+/* Başlıklar mobilde aşırı büyük olmasın */
+h1 { font-size: clamp(28px, 5vw, 48px); }
+h2 { font-size: clamp(16px, 2.6vw, 20px); }
+
+/* Skills barları: sabit genişlik KULLANMA, yüzde kullan */
+#skills .skill-bar {
+  width: 100%;
+  max-width: 520px; /* büyük ekranda üst sınır */
+}
+
+/* ------------------------- */
+/* TABLET ve ALTI */
+@media (max-width: 768px) {
+  /* Skills satırını iki sütundan teke düşür (label üstte, bar altta) */
+  #skills .skill {
+    display: grid;
+    grid-template-columns: 1fr;  /* tek kolon */
+    gap: 8px;
+    margin: 14px 0;
+  }
+
+  #skills .skill span {
+    font-size: 0.95rem;
+  }
+
+  #skills .skill-bar {
+    height: 12px;            /* parmakla rahat */
+    max-width: 100%;         /* ekran genişliğini doldur */
+  }
+
+  /* Sertifikalar çok uzun görünmesin */
+  .cert-list { gap: 10px; }
+}
+
+/* ------------------------- */
+/* KÜÇÜK TELEFONLAR */
+@media (max-width: 480px) {
+  /* Bölümler arası boşluğu artır, metin nefes alsın */
+  .section { margin-block: 28px; }
+
+  /* About paragrafı */
+  #about p {
+    font-size: 0.98rem;
+    line-height: 1.9;
+  }
+
+  /* Hero: metin ve foto arası boşluk */
+  .hero-grid { gap: 16px; }
+  .hero-photo img {
+    width: 220px; height: 220px; object-fit: cover;
+  }
+
+  /* Nav: link aralıkları */
+  .site-header .links a { padding: 8px 6px; }
+}
+
 
   
   
