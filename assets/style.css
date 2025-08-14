@@ -1,0 +1,311 @@
+:root {
+  --pink: #d84e9a;
+  --pink-light: #f4a9cc;
+  --fg: #111;
+  --muted: #61646b;
+  --bg: #fff;
+  --max: 1040px;
+}
+
+/* Temel */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.7;
+  font-family: 'Lora', serif;
+}
+
+
+
+
+/* Container */
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav-row {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--pink);
+  text-decoration: none;
+}
+.links a {
+  margin-left: 24px;
+  color: var(--pink);
+  text-decoration: none;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 500;
+}
+.links a:hover {
+  opacity: .8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Hero */
+/* Hero: metin + foto yan yana */
+.hero-grid{
+  display: grid;
+  grid-template-columns: 1fr 320px; /* sağdaki foto 320px */
+  gap: 32px;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: 3rem; /* başlık büyüklüğü */
+  font-weight: 700;  /* kalın */
+}
+
+.hero-text .lead {
+  color: rgba(0, 0, 0, 0.6); /* silik görünüm */
+  font-size: 1.1rem; 
+  line-height: 1.6;
+}
+
+
+
+
+/* Fotoğraf stili */
+.hero-photo{
+  margin: 0;
+}
+.hero-photo img{
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+  border: 6px solid #fff;                 /* beyaz çerçeve */
+  outline: 2px solid var(--pink-light);   /* pembe dış hat */
+}
+
+/* Dar ekranlarda üst üste gelsin ve foto ortalansın */
+@media (max-width: 900px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .hero-photo{
+    justify-self: start;   /* istersen center da yapabilirsin */
+    max-width: 220px;      /* mobilde biraz küçült */
+  }
+}
+
+#about p {
+  line-height: 1.8; /* satır aralığını artırır */
+  max-width: 800px; /* çok yayılmasını engeller */
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+
+
+/* Sections */
+.section {
+  padding: 56px 0 8px;
+  scroll-margin-top: 80px;
+}
+.section h2 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin: 0 0 18px;
+}
+.section p {
+  max-width: 70ch;
+  margin: 0 0 14px;
+}
+
+/* Certificates */
+.cert-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: grid;
+  gap: 14px;
+}
+.cert-list li {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+.cert-list .year {
+  color: #888;
+  font-size: .95rem;
+}
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid transparent;
+}
+.cert-link:hover {
+  border-bottom-color: currentColor;
+}
+.cert-icn {
+  width: 18px;
+  height: 18px;
+  fill: #e91e63;
+  opacity: .8;
+}
+@media (max-width: 640px) {
+  .cert-list li {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+}
+/* Skills Bölümü */
+#skills .skill {
+  display: grid;
+  grid-template-columns: 120px 1fr; /* solda skill adı, sağda bar */
+  align-items: center;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+#skills h2 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 18px;
+}
+
+#skills .skill span {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 80;
+  color: var(--muted);
+}
+
+#skills .skill-bar {
+  height: 12px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+#skills .skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink), var(--pink-light));
+  border-radius: inherit;
+  transition: width .6s ease;
+}
+
+/* Mobil görünümde alt alta gelsin */
+@media (max-width: 640px) {
+  #skills .skill {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+  }
+}
+
+
+
+
+/* Work list */
+.work {
+  padding: 18px 0;
+  border-top: 1px solid #eee;
+}
+.work:last-child {
+  border-bottom: 1px solid #eee;
+}
+.work-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.work h3 {
+  margin: 0;
+  color: #fac3db;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.meta {
+  color: #9aa0ae;
+  font-size: 14px;
+}
+.links a {
+  color: #f28bb2;
+}
+
+.work .links a:hover {
+  color: #d64584; /* hover’da başlık rengiyle aynı yap */
+}
+
+/* Contact – ikonlu */
+.contact-icons {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contact-icons li a {
+  font-size: 28px;
+  color: var(--pink);
+  transition: color 0.3s ease;
+}
+.contact-icons li a:hover {
+  color: #d60a79;
+}
+
+/* Footer */
+.site-footer {
+  color: #8a8f99;
+  padding: 28px 0 56px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .nav-row {
+    height: 64px;
+  }
+  .links a {
+    margin-left: 14px;
+  }
+  .hero {
+    padding-top: 48px;
+  }
+}
+
+  
+
+  
+  
+
+  
+  
