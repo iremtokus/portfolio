@@ -334,6 +334,78 @@ h2{ font-size: clamp(16px, 2.6vw, 20px); }
   }
 }
 
+
+/* ===== Mobilde (başlıklar hariç) tüm içerikleri ortala ===== */
+@media (max-width: 768px){
+
+  /* Genel: her bölümde h2 dışındaki çocukları ortala */
+  .section > *:not(h2){
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  /* Paragraflar: rahat okuma genişliği */
+  .section p{
+    max-width: 60ch;
+    line-height: 1.9;
+  }
+
+  /* About özelinde ekstra bir şey gerekmez, yukarıdaki kural yeterli */
+
+  /* Certificates: yıl ve linkleri ortala */
+  .cert-list{
+    justify-items: center;
+  }
+  .cert-list li{
+    grid-template-columns: 1fr;  /* zaten tek sütuna düşüyordu */
+    text-align: center;
+  }
+  .cert-list .year{
+    display: block;
+    text-align: center;
+  }
+
+  /* Skills: etiket ve barları ortala */
+  #skills{
+    justify-items: center;
+  }
+  #skills .skill{
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 8px;
+  }
+  #skills .skill span{
+    text-align: center;
+  }
+  #skills .skill-bar{
+    width: 100%;
+    max-width: 520px;
+  }
+
+  /* Work: başlık/metayı üst üste ve ortalı yap, açıklama & repo da ortalı */
+  .work-head{
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .work .links{
+    display: block;          /* header menüsünü etkilemez */
+    text-align: center;
+  }
+
+  /* Contact ikonları zaten yatay; tam ortaya çekelim */
+  .contact-icons{
+    justify-content: center;
+  }
+}
+
+/* Küçük telefonlarda biraz daha sıkı */
+@media (max-width: 480px){
+  .section p{ max-width: 58ch; }
+}
+
+
   
 
   
