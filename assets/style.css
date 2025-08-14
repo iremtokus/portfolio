@@ -351,6 +351,13 @@ h2{ font-size: clamp(16px, 2.6vw, 20px); }
     line-height: 1.9;
   }
 
+  @media (max-width: 768px) {
+    h1, h2, h3 {
+      text-align: center;
+    }
+  }
+  
+
   /* About özelinde ekstra bir şey gerekmez, yukarıdaki kural yeterli */
 
   /* Certificates: yıl ve linkleri ortala */
